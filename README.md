@@ -1,31 +1,57 @@
-[<img width="2182" height="602" alt="github+banner-20260130" src="https://github.com/flagos-ai/FlagCX/blob/main/.github/assets/banner-20260130.png" />](https://flagos.io/)
+# FlagOS Course
 
-<div align="right">
-  <a href="https://www.linkedin.com/company/flagos-community" target="_blank">
-    <img src="https://github.com/flagos-ai/OpenCourse/blob/main/.github/assets/Linkedin.png" alt="LinkIn" width="32" height="32" />
-  </a>
+This repository contains lectures, tutorials, and educational materials for the [FlagOS](https://github.com/flagos-ai) open-source AI system software stack.
 
-  <a href="https://www.youtube.com/@FlagOS_Official" target="_blank">
-    <img src="https://github.com/flagos-ai/OpenCourse/blob/main/.github/assets/youtube.png" alt="YouTube" width="32" height="32" />
-  </a>
+> The online learning center will be available at: [https://edu.flagos.io](https://edu.flagos.io)
 
-  <a href="https://x.com/FlagOS_Official" target="_blank">
-    <img src="https://github.com/flagos-ai/OpenCourse/blob/main/.github/assets/x.png" alt="X" width="32" height="32" />
-  </a>
+## Repository Structure
 
-  <a href="https://www.facebook.com/flagosglobalcommunity/" target="_blank">
-    <img src="https://github.com/flagos-ai/OpenCourse/blob/main/.github/assets/Facebook.png" alt="Facebook" width="32" height="32" />
-  </a>
+```
+course/
+├── G0/                          # Reserved
+├── G1/                          # Reserved
+├── Open-Source-AI-Platform-Educational-Resources-for-Universities/
+│   │                              # University course: 48 lectures, 7 modules
+│   ├── 01-Introduction-to-Large-AI-Models
+│   ├── 02-AI-Computing-Hardware-and-Software-Fundamentals
+│   ├── 03-AI-System-Software-and-Heterogeneous-Computing
+│   ├── 04-High-Performance-AI-Operators-and-Engineering
+│   ├── 05-AI-Compiler-Principles-and-Optimization
+│   ├── 06-Distributed-Parallel-Training-and-Communication
+│   └── 07-Performance-Benchmarking-and-Next-Gen-Kernel-Generation
+└── tutorial/                    # Hands-on tutorials for FlagOS components
+    ├── FlagGems/                  # High-performance AI operator library
+    ├── FlagTree/                  # Unified AI compiler
+    ├── FlagScale/                 # Multi-chip parallel training & inference
+    └── FlagCX/                    # Unified communication library
+```
 
-  <a href="https://discord.com/invite/ubqGuFMTNE" target="_blank">
-    <img src="https://github.com/flagos-ai/OpenCourse/blob/main/.github/assets/discord.png" alt="Discord" width="32" height="32" />
-  </a>
-</div>
+## University Course
 
-## About
+A comprehensive 48-lecture course covering the full AI system software stack, from hardware fundamentals to compiler optimization to distributed training.
 
-(under construction)
+Each module contains:
+- `X-1-slides_zh` — Chinese lecture slides + homework
+- `X-2-slides_en` — English lecture slides + homework
+- `X-3-videos_zh` — Chinese lecture video links
 
-## License
+| Module | Topic | Lectures |
+|--------|-------|----------|
+| 01 | Introduction to Large AI Models | General overview |
+| 02 | AI Computing Hardware & Software Fundamentals | 1–9 |
+| 03 | AI System Software & Heterogeneous Computing | 10–18 |
+| 04 | High-Performance AI Operators & Engineering | 10–18 |
+| 05 | AI Compiler Principles & Optimization | 19–27 |
+| 06 | Distributed Parallel Training & Communication | 28–36 |
+| 07 | Performance Benchmarking & Next-Gen Kernel Generation | 37–48 |
 
-This project is licensed under the [Apache License (Version 2.0)](./LICENSE).
+## Tutorials
+
+Hands-on tutorials for each core FlagOS component:
+
+| Component | Description |
+|-----------|-------------|
+| **FlagGems** | High-performance general-purpose AI operator library (Triton-based) |
+| **FlagTree** | Unified AI compiler for multi-chip backends |
+| **FlagScale** | Large-scale distributed training and inference framework |
+| **FlagCX** | Unified cross-chip communication library |
