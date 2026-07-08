@@ -1,0 +1,63 @@
+# All Videos (zh) - Full Course Index
+
+## Module I - AI System Software and Heterogeneous Computing (课时 01-09)
+
+- [课时 01-zh: 课程导论与 AI 硬件全景](https://jwolpxeehx.feishu.cn/slides/WwLos0EwBlqKS9d79secnSIjn7g)
+- [课时 02-zh: 异构计算编程模型](https://jwolpxeehx.feishu.cn/slides/CtKEsWjDol7bLLdDAeIceYEGnnf)
+- [课时 03-zh: 深度学习框架调用链路分析](https://jwolpxeehx.feishu.cn/slides/JyNlsPD4HlbG4zdxjnMcBkeDnIc)
+- [课时 04-zh: Triton 语言入门](https://jwolpxeehx.feishu.cn/slides/SlYVsLfK2lGvRBdn3zacSJeMneg)
+- [课时 05-zh: 环境搭建与工具链](https://jwolpxeehx.feishu.cn/slides/FclrssJSXlh127dCywFcG2TenVc)
+- [课时 06-zh: 向量计算基础](https://jwolpxeehx.feishu.cn/slides/CsagsEE5PlMtGGdWnh5cKpslnab)
+- [课时 07-zh: 矩阵乘法优化 I](https://jwolpxeehx.feishu.cn/slides/BkiasPhuWlqiOgdeZbbcWJUKnPf)
+- [课时 08-zh: 内存层次结构优化](https://jwolpxeehx.feishu.cn/slides/Bpy6sY4Dxl1vIFdusAYcd1KKnyc)
+- [课时 09-zh: Module I 期中项目](https://jwolpxeehx.feishu.cn/slides/LDJrsIQzGlhpEOd5AG8ciwwfnxd)
+
+## Module II - High-Performance AI Operators and Engineering (课时 10-18)
+
+- [课时 10-zh: 注意力机制原理与算子需求](https://jwolpxeehx.feishu.cn/file/P7usbXVqrookwxxjWstcEnxhnid)
+- [课时 11-zh: Flash Attention 实现 I（IO 感知）](https://jwolpxeehx.feishu.cn/file/NBX5baPfdoQGdWxymdfcBfvNnhb)
+- [课时 12-zh: Flash Attention 实现 II（算法优化）](https://jwolpxeehx.feishu.cn/file/IAXRbhC1RowghPxcmrFcktjonfe)
+- [课时 13-zh: 卷积算子优化 (Convolution)](https://jwolpxeehx.feishu.cn/file/NH7ObJHPbou3l8xKjsdciUffnsf)
+- [课时 14-zh: 归一化与激活函数](https://jwolpxeehx.feishu.cn/file/CH5HbhVjPoESv2xwxIkc4J53nLh)
+- [课时 15-zh: 算子融合](https://jwolpxeehx.feishu.cn/file/M1qjbho1sogUbJxOeBickcdnneg)
+- [课时 16-zh: 复杂算子调试与 Profiling](https://jwolpxeehx.feishu.cn/file/VhB4bqvUpopZMwxOQEdcCIBCnnG)
+- [课时 17-zh: 算子库的架构设计](https://jwolpxeehx.feishu.cn/file/PE8zbUZYhoQFF8x57zRcMMbqnzd)
+- [课时 18-zh: Module II 期末项目](https://jwolpxeehx.feishu.cn/file/YTaobrpjNo08ZyxQTUwcZ2fdncg)
+
+## Module III - AI Compiler Principles and Optimization (课时 19-27)
+
+- [课时 19-zh: AI 编译器概述](https://jwolpxeehx.feishu.cn/file/TZ3ob0dVPoEhNlxoYSFcNUsVn8g)
+- [课时 20-zh: 中间表示 (IR) 基础](https://jwolpxeehx.feishu.cn/file/MRIMbWBXhoFXkwxP2IxcC6G5nDm)
+- [课时 21-zh: MLIR 架构深度解析](https://jwolpxeehx.feishu.cn/file/NpIzbL1jsoXrntx2D0zcroDNnad)
+- [课时 22-zh: 算符融合 Pass (Fusion Pass)](https://jwolpxeehx.feishu.cn/file/U0t5bIs7ton5cgxLF7Wcouminuf)
+- [课时 23-zh: 循环不变代码外提](https://jwolpxeehx.feishu.cn/file/XqT3btJBfoavvpxEqkAcgnPAnNf)
+- [课时 24-zh: 布局与内存规划](https://jwolpxeehx.feishu.cn/file/NXNCb5a2roeDCOx2v10cEnjAnxh)
+- [课时 25-zh: 多芯片后端支持 I (Codegen)](https://jwolpxeehx.feishu.cn/file/WwYGbucpUoxvGVxshFucEVranCf)
+- [课时 26-zh: 多芯片后端支持 II (Runtime 集成)](https://jwolpxeehx.feishu.cn/file/GPXtb95dXoJ390x5A6KcuV3QnQg)
+- [课时 27-zh: Module III 期末项目](https://jwolpxeehx.feishu.cn/file/YUOJb8XGUoJfaNx30AWcVS2tnpg)
+
+## Module IV - Distributed Parallel Training and Communication (课时 28-36)
+
+- [课时 28-zh: 数据并行](https://jwolpxeehx.feishu.cn/file/JKU4bhVXTo0vKaxoXxiceRF5nWn)
+- [课时 29-zh: 模型并行 I (Tensor Parallel)](https://jwolpxeehx.feishu.cn/file/EFCab9H20otpwLxhgWpcFU7GnIV)
+- [课时 30-zh: 模型并行 II (Pipeline Parallel)](https://jwolpxeehx.feishu.cn/file/MNWibukqMoTiklxzfePcS5MqnDg)
+- [课时 31-zh: 通信原语](https://jwolpxeehx.feishu.cn/file/SAoAbCQK7o6cbzxJCWTcwlRQnRf)
+- [课时 32-zh: 通信拓扑优化](https://jwolpxeehx.feishu.cn/file/Lkv0bihbVozcofxVAtMcGviSnoc)
+- [课时 33-zh: 混合并行](https://jwolpxeehx.feishu.cn/file/ReQWbXq8Ho9tGIxZBQyc0dfxnYg)
+- [课时 34-zh: 容错与 checkpointing](https://jwolpxeehx.feishu.cn/file/X8XpbXE0ioscCMxpi3NcTtHunff)
+- [课时 35-zh: 显存优化技术](https://jwolpxeehx.feishu.cn/file/XufFbjqIAo4bxVxf1ZBcwd5onZe)
+- [课时 36-zh: Module IV 期末项目](https://jwolpxeehx.feishu.cn/file/JLgnbrbpto8ZHuxzmdZccLjlnCb)
+
+## Module V - Performance Benchmarking and Next-Gen Kernel Generation (课时 37-48)
+
+- [课时 37-zh: 性能分析指标](https://jwolpxeehx.feishu.cn/file/RhupbPfEPo5gluxxjtccAdPLn7g)
+- [课时 38-zh: 自动调优](https://jwolpxeehx.feishu.cn/file/VTqubysv5oaFHUxSpeqcTCzBnGg)
+- [课时 39-zh: 算子性能 Profiling 深度实践](https://jwolpxeehx.feishu.cn/file/LSkNbfUtsoETv0xbLqKcfw5BnXb)
+- [课时 40-zh: LLM 辅助编程概述](https://jwolpxeehx.feishu.cn/file/BkO3b8husoDaLmxrVuPcP4swnwd)
+- [课时 41-zh: KernelGen 的架构与 Prompt 工程](https://jwolpxeehx.feishu.cn/file/TO1hbyjb5omKwmx5NFvcuOyLnQb)
+- [课时 42-zh: 从生成到部署：生成代码的集成](https://jwolpxeehx.feishu.cn/file/Et0Eb9xXqo3M8hxLJMecKulrnjc)
+- [课时 43-zh: 异构系统的极致优化](https://jwolpxeehx.feishu.cn/file/XBaybGDQ9oUl5dx8fwHc2ej1ncd)
+- [课时 44-zh: 端到端性能优化](https://jwolpxeehx.feishu.cn/file/H0oDb4brzoj8N8xx43AcW3fYn9d)
+- [课时 45-zh: 开源贡献与社区协作](https://jwolpxeehx.feishu.cn/file/UYYNbCSb0ojqBxx7T73c4WF4nob)
+- [课时 46-47-zh: 课程项目答辩](https://jwolpxeehx.feishu.cn/file/S5yZbaJEHoRGlSx6r0lcZrwmnKc)
+- [课时 48-zh: 前沿技术展望与总结](https://jwolpxeehx.feishu.cn/file/XccjbbWymoAdhexwr7bcN8g8n6e)
