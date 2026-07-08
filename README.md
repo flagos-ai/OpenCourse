@@ -30,12 +30,20 @@ Open educational resources for the [FlagOS](https://flagos.io/) open-source AI s
 
 ## Repository Structure
 
-| Directory | Description |
-|-----------|-------------|
-| [`educational-resources-for-universities/`](educational-resources-for-universities/) | 高校合作支持中心（中文）：48 课时模块化课程课件、实验材料包、课程大纲示例、教师培训指南、在线实验室与高校合作流程 |
-| [`educational-resources-for-platform/`](educational-resources-for-platform/) | Platform program (English): syllabus, general education course, five textbook modules, and three days of hands-on labs |
-| [`educational-resources-for-china-ai-compute-faculty-development-program/`](educational-resources-for-china-ai-compute-faculty-development-program/) | Faculty development program: syllabus, general education course, textbook modules in English and French, and hands-on labs |
-| [`resources/`](resources/) | Shared resources: hands-on tutorials for FlagOS components and course teaching syllabus |
+This repository is organized around one **main-line course**, from which everything else is derived:
+
+- **[`course/`](course/)** is the mainline — the complete, actively developed and iterated curriculum. All ongoing course development happens here.
+- **[`editions/`](editions/)** holds **releases derived from the mainline**, tailored to specific audiences and programs.
+- **[`best-practices/`](best-practices/)** holds hands-on component tutorials that complement the course.
+
+| Directory | Role | Description |
+|-----------|------|-------------|
+| [`course/`](course/) | **Mainline** | 高校合作支持中心（中文）：48 课时模块化课程课件、实验材料包、课程大纲示例、教师培训指南、在线实验室与高校合作流程。持续开发迭代的课程主体。 |
+| [`editions/tencent-edu/`](editions/tencent-edu/) | Release | Tencent education platform edition (English): syllabus, general education course, five textbook modules, and hands-on labs |
+| [`editions/china-africa-faculty/phase-1/`](editions/china-africa-faculty/phase-1/) | Release | China–Africa AI Compute Faculty Development Program, Phase 1: syllabus, general education course, textbook modules in English and French, and runnable Ascend labs |
+| [`best-practices/`](best-practices/) | Tutorials | Hands-on tutorials for the four core FlagOS components (FlagGems, FlagTree, FlagScale, FlagCX) |
+
+Releases under [`editions/`](editions/) are organized by **program**, and each program by **phase** (`phase-1/`, `phase-2/`, …), so future cohorts are added alongside existing ones without disturbing them.
 
 ## University Course (中文课程体系)
 
@@ -49,11 +57,11 @@ A comprehensive 48-lecture modular course for universities, covering the full AI
 | 4 | 分布式并行训练与通信 / Distributed Parallel Training & Communication |
 | 5 | 性能评测与下一代内核生成 / Performance Benchmarking & Next-Gen Kernel Generation |
 
-Chinese and English slides, homework, and lecture video indexes are provided under [`educational-resources-for-universities/02-课件资源/`](educational-resources-for-universities/02-课件资源/). Universities can access online labs with GPU/NPU compute support — no local hardware required. See [`08-高校合作流程/`](educational-resources-for-universities/08-高校合作流程/) for how to participate.
+Chinese and English slides, homework, and lecture video indexes are provided under [`course/02-课件资源/`](course/02-课件资源/). Universities can access online labs with GPU/NPU compute support — no local hardware required. See [`08-高校合作流程/`](course/08-高校合作流程/) for how to participate.
 
-## Hands-on Tutorials
+## Component Best Practices
 
-Step-by-step tutorials for each core FlagOS component, under [`resources/tutorial/`](resources/tutorial/):
+In-depth technical guides for each core FlagOS component (principles, case studies, and hands-on practice), under [`best-practices/`](best-practices/):
 
 | Component | Description |
 |-----------|-------------|
