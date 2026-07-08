@@ -1,6 +1,6 @@
-# Educational Resources for China-Africa AI Compute Faculty Development Program
+# Educational Resources for AI Compute Faculty Development Program
 
-This repository contains comprehensive educational materials for the China-Africa AI Compute Faculty Development Program.
+This repository contains comprehensive educational materials for the AI Compute Faculty Development Program.
 
 ## Overview
 

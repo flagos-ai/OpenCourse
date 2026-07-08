@@ -73,4 +73,4 @@ Hands-on lab materials (NPU & Triton basics, performance tuning, and LLM deploym
 
 ## License
 
-Course materials in this repository are licensed under [CC BY-SA 4.0](./LICENSE) unless otherwise noted in a subdirectory's own `LICENSE` file.
+Course materials in this repository are licensed under [CC BY-NC 4.0](./LICENSE) (Creative Commons Attribution-NonCommercial 4.0 International).

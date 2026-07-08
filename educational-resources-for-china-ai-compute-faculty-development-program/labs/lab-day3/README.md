@@ -1,6 +1,6 @@
 # CANN-Triton Lab Day 3: LLM Deployment
 
-Hands-on lab for the China-Africa AI Compute Faculty Development Program.
+Hands-on lab for the AI Compute Faculty Development Program.
 
 Day 3 focuses on deploying and serving large language models (LLMs) locally. Building on Days 1-2, which covered NPU programming and performance optimization, today you will learn to deploy an LLM inference service and interact with it.
 
