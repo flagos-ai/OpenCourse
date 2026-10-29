@@ -1,0 +1,11 @@
+{
+  "name": "BI-V150",
+  "arch": "ivcore11",
+  "notes": "Reference assumptions, not verified instance peaks. An explicit --hardware JSON overrides student TODOs; otherwise student_todos.py takes precedence. Only mark peaks_verified with a matching documented source.",
+  "peak_tflops_fp16": 192.0,
+  "hbm_bandwidth_GBps": 1228.8,
+  "hbm_capacity_GB": 64,
+  "memory_type": "HBM2e",
+  "peaks_verified": false,
+  "source_reference": ""
+}

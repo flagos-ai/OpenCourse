@@ -1,0 +1,37 @@
+version: 1
+labs:
+  - id: pre-course-image-to-text-inference
+    stage: pre-course
+    platform: iluvatar-corex-bi-v150
+    path: pre-course/iluvatar-corex-bi-v150
+    status: maintained
+  - id: module-01-triton-foundations
+    module: module-01
+    platform: iluvatar-corex-bi-v150
+    path: modules/module-01/iluvatar-corex-bi-v150
+    status: maintained
+  - id: module-02-fused-add-rmsnorm
+    module: module-02
+    platform: iluvatar-corex-bi-v150
+    path: modules/module-02/iluvatar-corex-bi-v150
+    status: maintained
+  - id: module-03-triton-compiler-passes
+    module: module-03
+    platform: iluvatar-corex-bi-v150
+    path: modules/module-03/iluvatar-corex-bi-v150
+    status: maintained
+  - id: module-04-distributed-training
+    module: module-04
+    platform: iluvatar-corex-bi-v150
+    path: modules/module-04/iluvatar-corex-bi-v150
+    status: maintained
+  - id: module-05-performance-profiling
+    module: module-05
+    platform: iluvatar-corex-bi-v150
+    path: modules/module-05/iluvatar-corex-bi-v150
+    status: maintained
+  - id: edge-device-triton-exercises
+    stage: special-topic
+    platform: k3-board
+    path: special-topic-labs/edge-device/k3-board
+    status: maintained

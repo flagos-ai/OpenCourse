@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Module5BenchmarkResult",
+  "type": "object",
+  "description": "实验一聚合输出（results/benchmark_*.json）字段说明",
+  "properties": {
+    "experiment": { "type": "string" },
+    "scenario": { "enum": ["Offline", "Server"] },
+    "workload": {
+      "type": "object",
+      "properties": {
+        "M": { "type": "integer" },
+        "N": { "type": "integer" },
+        "K": { "type": "integer" },
+        "dtype": { "type": "string" },
+        "num_queries": { "type": "integer" }
+      }
+    },
+    "comparison": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "requested": { "type": "string" },
+          "resolved": { "type": "string" },
+          "latency_ms": {
+            "type": "object",
+            "properties": {
+              "median": { "type": "number" },
+              "p50": { "type": "number" },
+              "p90": { "type": "number" },
+              "p99": { "type": "number" }
+            }
+          },
+          "throughput": {
+            "type": "object",
+            "properties": {
+              "samples_per_s": { "type": "number" },
+              "effective_tflops": { "type": "number" },
+              "wall_time_s": { "type": "number" }
+            }
+          },
+          "resources": {
+            "type": "object",
+            "properties": {
+              "cpu_pct_avg": { "type": ["number", "null"] },
+              "gpu_util_pct_avg": { "type": ["number", "null"] },
+              "power_w_avg": { "type": ["number", "null"] }
+            }
+          },
+          "sla": { "type": "object" }
+        }
+      }
+    },
+    "runs": {
+      "type": "array",
+      "description": "完整 LoadGen 单次运行记录（含 queries 明细）"
+    }
+  }
+}

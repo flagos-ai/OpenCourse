@@ -1,0 +1,36 @@
+{
+  "scenario": "Server",
+  "workload": {
+    "M": 1024,
+    "N": 1024,
+    "K": 1024,
+    "dtype": "float16",
+    "num_queries": 32,
+    "target_qps": 8.0,
+    "arrival": "poisson"
+  },
+  "measurement": {
+    "warmup": 3,
+    "repeats": 1,
+    "sync": true
+  },
+  "sla": {
+    "p99_latency_ms": 500.0
+  },
+  "sut": {
+    "implementations": [
+      "torch",
+      "baseline",
+      "autotune"
+    ],
+    "baseline_tile": {"BLOCK_M": 32, "BLOCK_N": 32, "BLOCK_K": 32},
+    "autotune_configs": [
+      {"BLOCK_M": 32, "BLOCK_N": 32, "BLOCK_K": 32},
+      {"BLOCK_M": 64, "BLOCK_N": 64, "BLOCK_K": 32}
+    ]
+  },
+  "resources": {
+    "sample_interval_s": 0.5,
+    "enable": false
+  }
+}

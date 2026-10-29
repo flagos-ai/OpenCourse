@@ -1,0 +1,3 @@
+torch>=2.11
+triton>=3.6,<4
+numpy>=1.24
