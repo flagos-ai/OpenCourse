@@ -9,7 +9,7 @@ The program provides educational resources covering AI computing systems, from h
 ## Directory Structure
 
 ```
-editions/china-africa-faculty/phase-1/
+editions/ai-compute-faculty-international-1st-cohort-china-africa/phase-1/
 ├── syllabus/                          # Course syllabus
 ├── general-education-course/          # AI Large Language Model General Course
 ├── textbooks/                         # Lecture slides (EN & FR versions)
