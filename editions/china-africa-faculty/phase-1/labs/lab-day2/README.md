@@ -108,7 +108,6 @@ rm -rf ~/.triton/cache ~/.triton/dump
 
 ## Resources
 
-- Day 1 lab: https://gitee.com/jieran-zhang/lab_day1
 - Triton-Ascend programming guide: https://ascend.github.io/triton-ascend/sources/programming-guide/introduction.html
 - Triton-Ascend migration guide (GPU → Ascend): https://github.com/triton-lang/triton-ascend/blob/main/docs/en/migration_guide/migrate_from_gpu.md
 

@@ -20,7 +20,6 @@ source /usr/local/Ascend/ascend-toolkit/set_env.sh
 Then:
 
 ```bash
-git clone https://gitee.com/jieran-zhang/lab_day1.git
 cd lab_day1
 source setup.sh        # also sources set_env.sh and prints versions
 python 00_check_env.py # verify everything works
@@ -206,7 +205,6 @@ python -c "import torch, torch_npu, triton; print('all ok')"
 
 ## Resources
 
-- Triton-Ascend (Gitee mirror): https://gitee.com/ascend/triton-ascend
 - Triton-Ascend (GitHub mirror): https://github.com/Ascend/triton-ascend
 - CANN documentation: https://www.hiascend.com/document
 - OpenAI Triton tutorials: https://triton-lang.org/main/getting-started/tutorials/

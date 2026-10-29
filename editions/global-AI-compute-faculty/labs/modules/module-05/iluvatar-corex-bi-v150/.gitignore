@@ -1,0 +1,22 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.env
+.DS_Store
+.idea/
+.vscode/
+
+# Large profiling binaries (keep small JSON/PNG if you choose to commit results)
+*.trace
+*.prof
+proton_*.hatchet
+results/profiling/**/*.trace
+results/profiling/**/*.raw
+
+# Do not vendor sibling labs
+_ref_lab1_day1/
+_ref_lab1_day2/
+lab1-day1/
+lab1-day2/

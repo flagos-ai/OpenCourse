@@ -105,7 +105,6 @@ Get the lab code:
 
 ```bash
 cd ~
-git clone https://gitee.com/<YOUR_USERNAME>/cann-triton-lab-day1.git
 cd cann-triton-lab-day1
 source setup.sh
 ```
@@ -247,11 +246,9 @@ python 04_matmul_compare.py
 - The ecosystem is mature enough to support real research and teaching.
 
 **Resources:**
-- Triton-Ascend (Gitee): https://gitee.com/ascend/triton-ascend
 - Triton-Ascend (GitHub mirror): https://github.com/Ascend/triton-ascend
 - CANN docs: https://www.hiascend.com/document
 - Ascend community: https://www.hiascend.com/forum
-- Today's lab repo (forkable): https://gitee.com/<YOUR_USERNAME>/cann-triton-lab-day1
 - OpenAI Triton tutorials (the kernels here are based on these):
   https://triton-lang.org/main/getting-started/tutorials/
 

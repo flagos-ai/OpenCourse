@@ -1,0 +1,9 @@
+torch>=2.0.0
+numpy>=1.24.0
+matplotlib>=3.7.0
+psutil>=5.9.0
+# Local CPU tip (Windows/Linux without GPU):
+#   pip install torch --index-url https://download.pytorch.org/whl/cpu
+# Optional on NVIDIA: triton (bundled with recent torch or install separately)
+#   pip install triton
+# On 天数 BI-V150: follow platform docs for torch + Triton.
