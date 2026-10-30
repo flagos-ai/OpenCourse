@@ -1,3 +1,3 @@
 # Online Lab Assistant
 
-Install the extension package `online-lab-course-assistant-0.0.7.vsix`, then follow [the quick-start guide](flagos-lab-assistant-quick-start-guide.pdf). The package version `0.0.7` is the current file supplied with this course repository.
+The Online Lab Assistant package and quick-start guide are included in the [second-cohort archive release](https://github.com/flagos-ai/OpenCourse/releases/tag/edition-ai-compute-faculty-international-2nd-cohort-global). Download the release asset, install `online-lab-course-assistant-0.0.7.vsix`, and follow the included guide.

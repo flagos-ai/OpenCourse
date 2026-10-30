@@ -37,7 +37,7 @@ python test.py
 
 | File | Description |
 |------|-------------|
-| `Practical_Handbook.pdf` | Detailed lab handbook with step-by-step instructions |
+| Practical handbook | Included in the [first-cohort archive release](https://github.com/flagos-ai/OpenCourse/releases/tag/edition-ai-compute-faculty-international-1st-cohort-china-africa) |
 | `client.py` | Simple OpenAI-compatible client for single-turn chat |
 | `test.py` | Multi-turn continuous chat client with context management |
 

@@ -13,7 +13,7 @@
 
 ## 教学大纲（Syllabus）
 
-> 📄 中文版：`7-1-slides_zh/大纲_性能评测与下一代内核生成_Syllabus.docx`
+> 课件与大纲请从[主线课程 Release](https://github.com/flagos-ai/OpenCourse/releases/tag/mainline-course-v1.0.0)下载。
 
 建议在学习本模块前优先阅读大纲，了解课程目标、先修要求和学习路径。
 

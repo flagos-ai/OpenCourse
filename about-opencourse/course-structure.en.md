@@ -6,7 +6,7 @@ delivery term to their local curriculum requirements.
 
 ## Course and lab entry points
 
-- [English lecture collection](../lectures/en/)
+- [English lecture collection and download package](https://github.com/flagos-ai/OpenCourse/releases/tag/mainline-course-v1.0.0)
 - [All labs and environment guide](../labs/README.md)
 
 | Module | Topic | Suggested hours | Resources |

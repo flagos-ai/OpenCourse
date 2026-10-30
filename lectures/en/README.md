@@ -2,6 +2,9 @@
 
 English lecture slides for the 48-lecture course are organized into five modules. Each module directory contains the individual per-lecture decks.
 
+Download the complete English lecture package from the
+[mainline course release](https://github.com/flagos-ai/OpenCourse/releases/download/mainline-course-v1.0.0/opencourse-mainline-v1.0.0-lectures-en.zip).
+
 | Module | Topic | Directory |
 | --- | --- | --- |
 | Module 1 | AI Systems Software Foundations and Heterogeneous Computing | [module-1-ai-systems-software-foundations-and-heterogeneous-computing/](module-1-ai-systems-software-foundations-and-heterogeneous-computing/) |

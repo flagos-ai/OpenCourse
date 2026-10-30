@@ -4,7 +4,7 @@ FlagOS OpenCourse 的核心课程为 **48 学时、3 学分**。课程包含五�
 
 ## 课程与实验入口
 
-- [中文课件总目录](../lectures/zh/)
+- [中文课件总目录与下载包](https://github.com/flagos-ai/OpenCourse/releases/tag/mainline-course-v1.0.0)
 - [全部实验与环境指南](../labs/README.md)
 
 | 模块 | 主题 | 建议学时 | 资源 |

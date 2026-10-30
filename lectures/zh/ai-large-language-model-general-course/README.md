@@ -8,8 +8,7 @@
 
 | 文件名               | 类型   | 描述                  |
 |----------------------|--------|-----------------------|
-| AI 大模型通识课.pptx | 幻灯片 | AI 大模型通识课程讲义 |
-| 实操手册.pdf         | PDF    | 课程实操指导手册      |
+| 课件与实操手册 | Release asset | 请从 [主线课程 Release](https://github.com/flagos-ai/OpenCourse/releases/tag/mainline-course-v1.0.0) 下载 |
 
 ## 课程视频
 

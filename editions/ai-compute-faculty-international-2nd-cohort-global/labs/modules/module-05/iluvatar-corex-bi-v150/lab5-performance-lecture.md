@@ -4,7 +4,7 @@
 
 **Version:** aligned with README and Step 04 acceptance at `8f65814` (16 October 2026). Ixsmi and ixsys are required; ixkn is optional for acceptance.
 
-**Companion PDF:** [Day 2 Lab 5 demonstration](day2-lab5-demonstration.pdf). Page numbers below match the PDF.
+**Companion PDF:** Day 2 Lab 5 demonstration, included in the [second-cohort archive release](https://github.com/flagos-ai/OpenCourse/releases/tag/edition-ai-compute-faculty-international-2nd-cohort-global). Page numbers below match the PDF.
 
 **Historical reference:** the 15 October snapshot and six-process study are cited for context only; the source archive is not distributed with this course package. Pages 14-15 use a historical successful capture.
 

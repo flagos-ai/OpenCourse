@@ -39,7 +39,7 @@ editions/ai-compute-faculty-international-1st-cohort-china-africa/phase-1/
 
 | File | Description |
 |------|-------------|
-| `general-education-course/ai-large-language-model-general-course.pptx` | An accessible overview of large language models — what they are, how they work, and why they matter. Designed to motivate learners before diving into technical depth. |
+The general-course slides are included in the [first-cohort archive release](https://github.com/flagos-ai/OpenCourse/releases/tag/edition-ai-compute-faculty-international-1st-cohort-china-africa). The repository retains this description and the lab documentation; large lecture files are distributed as release assets.
 
 **Purpose:**
 - Bridge the gap for newcomers with limited AI background

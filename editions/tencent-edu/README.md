@@ -2,6 +2,8 @@
 
 This directory contains comprehensive educational materials for the Tencent education platform edition.
 
+The complete edition is distributed as the [Tencent Education archive release](https://github.com/flagos-ai/OpenCourse/releases/tag/opencourse-edition-tencent-edu). The release package contains the lecture materials, syllabus, general course, and lab materials prepared for this edition.
+
 ## Overview
 
 The program provides educational resources covering AI computing systems, from hardware foundations to software optimization.
@@ -33,7 +35,7 @@ editions/tencent-edu/
 
 | File | Description |
 |------|-------------|
-| `general-education-course/ai-large-language-model-general-course.pptx` | An accessible overview of large language models — what they are, how they work, and why they matter. Designed to motivate learners before diving into technical depth. |
+| General-course materials | Included in the [Tencent Education archive release](https://github.com/flagos-ai/OpenCourse/releases/tag/opencourse-edition-tencent-edu) |
 
 **Purpose:**
 

@@ -13,8 +13,7 @@
 
 ## 教学大纲（Syllabus）
 
-> 📄 中文版：`2-1-slides_zh/大纲_智能计算系统软硬件基础_Syllabus.docx`
-> 📄 英文版：`2-2-slides_en/Hardware and Software Foundations of Intelligent Computing Systems_Syllabus.docx`
+> 完整课件与大纲请从[主线课程 Release](https://github.com/flagos-ai/OpenCourse/releases/tag/mainline-course-v1.0.0)下载。
 
 这是**课程总大纲**，涵盖所有 5 个子模块的整体教学安排，建议在开始学习前优先阅读。
 
