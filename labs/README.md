@@ -13,7 +13,10 @@ cd OpenCourse
 
 | Course unit | Lab | Platform | Directory |
 | --- | --- | --- | --- |
-| Pre-course | Image-to-Text Inference | Iluvatar CoreX BI-V150 | [pre-course/iluvatar-corex-bi-v150](pre-course/iluvatar-corex-bi-v150/) |
+| Pre-course | Image-to-Text Inference | Iluvatar CoreX BI-V150 | [pre-course/iluvatar-corex-bi-v150](pre-course/iluvatar-corex-bi-v150/image-to-text-inference-lab-on-iluvatar-corex.md) |
+| Pre-course | Inference Deployment + RAG | Iluvatar CoreX BI-V150 | [pre-course/iluvatar-corex-bi-v150](pre-course/iluvatar-corex-bi-v150/inference-deployment-rag-lab-on-iluvatar-corex.md) |
+| Pre-course | Harness Agent | Iluvatar CoreX BI-V150 | [pre-course/iluvatar-corex-bi-v150](pre-course/iluvatar-corex-bi-v150/harness-agent-lab-on-iluvatar-corex.md) |
+| Pre-course | sglang Inference | Huawei Ascend 910B | [pre-course/ascend-910b](pre-course/ascend-910b/sglang-inference-lab-on-ascend-910b.md) |
 | Module 1 | Triton Foundations | Iluvatar CoreX BI-V150 | [modules/module-01/iluvatar-corex-bi-v150](modules/module-01/iluvatar-corex-bi-v150/) |
 | Module 2 | Fused Add + RMSNorm | Iluvatar CoreX BI-V150 | [modules/module-02/iluvatar-corex-bi-v150](modules/module-02/iluvatar-corex-bi-v150/) |
 | Module 3 | Triton Optimization Passes | Iluvatar CoreX BI-V150 | [modules/module-03/iluvatar-corex-bi-v150](modules/module-03/iluvatar-corex-bi-v150/) |

@@ -9,6 +9,11 @@ This lab runs image-to-text inference with vLLM, the FlagOS vLLM plugin, and Fla
 
 For the stable learner-facing manual, use [image-to-text-inference-lab-on-iluvatar-corex.md](image-to-text-inference-lab-on-iluvatar-corex.md).
 
+## Other pre-course labs on this platform
+
+- [Inference Deployment Lab](inference-deployment-rag-lab-on-iluvatar-corex.md) — deploy Qwen3-4B with vLLM, call the OpenAI-compatible service and a multi-turn chat client, then optionally layer on a local RAG knowledge base and an agentic-search retrieval loop.
+- [Harness Agent Lab](harness-agent-lab-on-iluvatar-corex.md) — serve Qwen2.5-14B-Instruct with tool calling enabled and drive it with the Hermes agent harness to complete a small autonomous coding task.
+
 ## Environment
 
 - Iluvatar CoreX BI-V150: 2 cards / 4 logical cores, 32 GiB VRAM each
