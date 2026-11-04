@@ -7,7 +7,7 @@ This directory is the self-contained archive of materials delivered for the 2026
 | Learning unit | Teaching material | Lab material |
 | --- | --- | --- |
 | Program context | Included in the [archive release](https://github.com/flagos-ai/OpenCourse/releases/tag/edition-ai-compute-faculty-international-2nd-cohort-global) | - |
-| Pre-course | Included in the archive release | [Image-to-Text Inference](labs/pre-course/iluvatar-corex-bi-v150/) |
+| Pre-course | Included in the archive release | [Image-to-Text Inference](labs/pre-course/iluvatar-corex-bi-v150/image-to-text-inference-lab-on-iluvatar-corex.md), [Inference Deployment + RAG](labs/pre-course/iluvatar-corex-bi-v150/inference-deployment-rag-lab-on-iluvatar-corex.md), [Harness Agent](labs/pre-course/iluvatar-corex-bi-v150/harness-agent-lab-on-iluvatar-corex.md) (Iluvatar BI-V150); [sglang Inference](labs/pre-course/ascend-910b/sglang-inference-lab-on-ascend-910b.md) (Ascend 910B) |
 | Module 1 | Included in the archive release | [BI-V150 Triton lab](labs/modules/module-01/iluvatar-corex-bi-v150/) |
 | Module 2 | Included in the archive release | [Fused Add + RMSNorm lab](labs/modules/module-02/iluvatar-corex-bi-v150/) |
 | Module 3 | Included in the archive release | [Triton optimization-pass lab](labs/modules/module-03/iluvatar-corex-bi-v150/) |
