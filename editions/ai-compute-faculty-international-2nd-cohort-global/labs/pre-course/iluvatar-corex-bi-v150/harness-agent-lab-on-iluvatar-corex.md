@@ -5,6 +5,8 @@
 
 This lab serves Qwen2.5-14B-Instruct with vLLM, the FlagOS vLLM plugin, and FlagGems, enables tool calling, and drives it with the Hermes agent harness to complete a small autonomous coding task end to end.
 
+**Note:** due to compatibility issues between the model and the Hermes parser (see [Harness mini task](#harness-mini-task)), this experiment requires manually creating the scripts to complete the entire harness experiment.
+
 The course environment has the required packages preinstalled. Run the install section below only when preparing a new environment.
 
 ## Download FlagOS components
@@ -78,7 +80,24 @@ hermes config set model.base_url http://172.17.0.2:8010/v1
 hermes config set model.api_key not-needed
 hermes config set model.default qwen
 hermes config set model.context_length 65536
-hermes config set model.max_tokens 819
+hermes config set model.max_tokens 8192
+hermes config set agent.tool_use_enforcement true
+hermes config get agent.tool_use_enforcement
+hermes tools enable file
+hermes tools enable terminal
+```
+
+4. Open `config.yaml` and add `supports_tools: true`:
+
+```yaml
+model:
+  provider: custom
+  base_url: http://172.17.0.2:8010/v1
+  api_key: not-needed
+  default: qwen
+  context_length: 65536
+  max_tokens: 8192
+  supports_tools: true
 ```
 
 ## Start the service
@@ -128,6 +147,14 @@ Run pytest test_todo.py -v and make sure all tests pass
 Finally report: how many files were created and how many tests passed
 ```
 
+**Parser incompatibility:** the vLLM v0.24 `hermes` tool parser is incompatible with the Qwen2.5 tool output format. It cannot parse `tool_calls` and degrades them to plain text, so tool calls do not work and the agent outputs code as plain text. Copy each code block the agent prints into `todo.py` and `test_todo.py` yourself, and keep conversing with the agent until all tests pass.
+
 ## Completion criteria
 
-The agent autonomously creates `todo.py` and `test_todo.py`, runs `pytest test_todo.py -v` through its tool-calling loop until every test passes, and reports the file and test counts. Record the model, endpoint, platform, the agent's final report, and any runtime error in your lab notes.
+Manually create `todo.py` and `test_todo.py` from the code the agent produces, run `pytest test_todo.py -v`, and iterate with the agent until every test passes. Record the model, endpoint, platform, the agent's final report, the code you pasted in, and any runtime error in your lab notes.
+
+## Open-ended tasks
+
+1. Design a transform LLM output hook that converts the model output into a format the `hermes` parser can recognize. See the Event Hooks documentation:
+   <https://hermes-agent.nousresearch.com/docs/zh-Hans/user-guide/features/hooks>
+2. None of the existing parsers work; you can design a new parser.
