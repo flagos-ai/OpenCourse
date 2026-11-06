@@ -42,7 +42,7 @@ FP16 full-precision model:
 ```bash
 modelscope download \
   qwen/Qwen2.5-14B-Instruct \
-  --local-dir /flagos/lab/models/Qwen2.5-14B-Instruct
+  --local-dir /models/Qwen2.5-14B-Instruct
 ```
 
 ## Download and configure the Hermes agent
@@ -109,7 +109,7 @@ export CUDA_VISIBLE_DEVICES=0,1,2,3
 export VLLM_ENGINE_ITERATION_TIMEOUT_S=3600
 export VLLM_EXECUTE_MODEL_TIMEOUT_SECONDS=3600
 
-vllm serve /flagos/lab/models/Qwen2.5-14B-Instruct \
+vllm serve /models/Qwen2.5-14B-Instruct \
   --tensor-parallel-size 4 \
   --served-model-name qwen \
   --enable-auto-tool-choice \
