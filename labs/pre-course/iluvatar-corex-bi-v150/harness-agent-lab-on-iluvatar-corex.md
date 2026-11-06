@@ -1,7 +1,5 @@
 # Harness Lab
 
-**Note: Due to compatibility issues between the model and the Hermes parser, this experiment requires manually creating scripts to complete the entire harness experiment\.**
-
 # Download FlagOS components
 
 ```Bash
@@ -28,7 +26,7 @@ pip install --no-build-isolation .
 
 Ignore the incompatibility warnings
 
-# Download model weights
+# Download model weights \(pre\-installed, can skip\)
 
 FP16 full\-precision model
 
@@ -38,7 +36,7 @@ modelscope download \
   --local-dir /flagos/lab/models/Qwen2.5-14B-Instruct
 ```
 
-# Download and configure Hermes Agent
+# Download and configure Hermes Agent \(pre\-installed, can skip\)
 
 1. Download and install
 
@@ -155,6 +153,98 @@ Note: The vllm 0\.24 hermes parser is incompatible with the Qwen2\.5 tool output
 > 
 
 2. None of the existing parsers work; you can design a new parser\.
+
+
+
+# **Answer to Option 1: Configure the code\-writer hook \(optional fallback\)**
+
+When Hermes can't turn Qwen2\.5's output into a `file` tool call, use a `transform_llm_output` hook to extract code blocks from the model response and write them to disk\.
+
+## 1\. Place the script
+
+Create the directory first \(it may not exist in a fresh container\):
+
+```bash
+mkdir -p /root/.hermes/agent-hooks
+```
+
+Put `code-writer.py` at:
+
+```Plain Text
+/root/.hermes/agent-hooks/code-writer.py
+```
+
+Make it executable \(copying from Windows strips the exec bit, so this is required\):
+
+```bash
+chmod +x /root/.hermes/agent-hooks/code-writer.py
+```
+
+## 2\. Update the config
+
+Append to the end of `/root/.hermes/config.yaml` \(`hooks_auto_accept` must start at column 0, same level as `hooks` — do not indent it under `hooks`\):
+
+```yaml
+hooks:
+  transform_llm_output:
+    - command: "/root/.hermes/agent-hooks/code-writer.py"
+      timeout: 15
+hooks_auto_accept: true
+```
+
+## 3\. Smoke test
+
+```bash
+printf '%s' '{"cwd":"/tmp","extra":{"response_text":"x\n```python\n# todo.py\nprint(1)\n```\n"}}' | python3 /root/.hermes/agent-hooks/code-writer.py; cat /tmp/todo.py
+```
+
+You should see `[code-writer] wrote: ['todo.py']` and `print(1)`\.
+
+## 4\. Authorize \+ verify \(must redo after switching containers/environments\)
+
+The allowlist lives at `~/.hermes/shell-hooks-allowlist.json`; it is not migrated with the container, so you must re\-authorize in every new environment\.
+
+**Important**: Both the authorize and verify commands must be run from `/root` \(i\.e\. `~`\); otherwise Hermes reads a different config/allowlist and `hooks doctor` keeps showing `✗ not allowlisted`:
+
+```bash
+cd /root
+hermes --accept-hooks
+hermes hooks doctor
+```
+
+`doctor` must show all three checks as ✓:
+
+```Plain Text
+✓ script exists and is executable
+✓ allowlisted
+✓ JSON smoke test
+```
+
+As long as you see `✗ not allowlisted`, the hook will not fire at runtime and no files will be produced\.
+
+## 5\. Run the task
+
+```bash
+cd /root
+hermes --accept-hooks
+# send the todo prompt, wait for it to finish
+ls -l /root/todo.py /root/test_todo.py
+pytest /root/test_todo.py
+```
+
+## 6\. Troubleshooting when no files are produced
+
+```bash
+hermes logs --level INFO | grep code-writer
+```
+
+- If you see `[code-writer] wrote: [...]`: the hook fired\. No files on disk means the model didn't emit a recognizable ````python` block — inspect the raw model output\.
+
+- If there's no output at all: the hook didn't fire\. Go back to step 4 and confirm `allowlisted`; verify the config indentation is correct and the script has the exec bit\.
+
+## code\-writer\.py source
+
+\[code\-writer\.py\]
 
 
 
