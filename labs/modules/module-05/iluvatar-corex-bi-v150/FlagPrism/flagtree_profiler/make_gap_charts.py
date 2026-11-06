@@ -132,7 +132,7 @@ def duration():
                 va="center", fontsize=10)
     ax.text(0.98, 0.04,
             L("注:vector_add 被 replay 十几次、rmsnorm 仅 1 次,\n单次 rmsnorm 实际更贵",
-              "note: vector_add replayed ~十x, rmsnorm 1x;\nper-call rmsnorm is costlier"),
+              "note: vector_add replayed ~10x, rmsnorm 1x;\nper-call rmsnorm is costlier"),
             transform=ax.transAxes, ha="right", va="bottom", fontsize=8,
             color="gray")
     fig.tight_layout()
