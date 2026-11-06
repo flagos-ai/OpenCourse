@@ -1170,3 +1170,209 @@ is needed to be clean.
 > `_artifacts/` to read the corresponding statement's `*_value.npy`, and use numpy to find the
 > indices where `isnan` is true. Level 1 gives "how many bad values there are", level 2 gives
 > "exactly which ones". The next step demonstrates precisely this.
+
+## D-6: Go to level 2 — full dump and pinpoint exactly which lanes
+
+The level 1 summary only tells you "this statement has 8 nans", but not **which** lane went bad. To
+pin it down to the lane, you have to turn on level 2: beyond the summary, it dumps each statement
+result's **full tensor values** (and, when the backend supports it, the **per-lane memory access
+addresses**) to disk as `.npy` artifacts, which you then use numpy to pick out the bad indices from.
+
+### How to turn on level 2
+
+The main script `exp_debugger_tianshu.py` reads the collection level from environment variables, so
+you can switch directly; the NaN-catching `exp_catch_nan.py` has `level=1` hard-coded, so either
+change two lines or turn it on separately following the minimal fragment below:
+
+```python
+# Three key points: level=2, give addr_level 2 if you want per-lane addresses, output_dir must be non-None
+debugger.configure(output_dir=Path("/tmp/flagtree_debugger_nan_lv2"),
+                   record_capacity=2048)
+debugger.activate(level=2, addr_level=2)
+# The in-kernel marker must be synced to level=2 as well:
+#   ftl.debug_collect_start(level=2, addr_level=2)
+```
+
+With the main script, one line of environment variables suffices (no code change needed):
+
+```bash
+FLAGTREE_DEBUGGER_RECORD_LEVEL=2 FLAGTREE_DEBUGGER_ADDR_LEVEL=2 \
+  python3.12 exp_debugger_tianshu.py
+```
+
+> Three hard constraints; hitting them errors directly at **compile time** (rather than giving you a
+> truncated report):
+> 1. At `level=2`, `output_dir` **cannot be `None`**, otherwise there is nowhere to dump.
+> 2. Only numeric/pointer patterns whose shape can be determined at compile time and that the
+>    current backend can legally lower are supported; forcing level 2 on an unsupported pattern errors.
+> 3. If `record_capacity` overflows (`overflow_count` nonzero in the report), level 2 **does not
+>    allow** exporting artifacts from the overflowed buffer. Raise the capacity and rerun.
+
+### The extra files from level 2
+
+Compared to level 1, each run has one additional `_artifacts/` directory and an index:
+
+| File/directory | Content |
+|-----------|------|
+| `<...>_artifacts/` | each statement result's `.npy`, with file names like `op3_inst0_rec10_value.npy` |
+| `*_value.npy` | this statement result's **full values** (always present at level 2) |
+| `*_memory_address.npy` | this access's **per-lane addresses** (only present when `addr_level=2` and the backend supports that pointer/mask pattern) |
+| `full_dump_index` (run field `full_dump_index_path`) | the mapping table from statement -> corresponding `.npy` file |
+
+The main report `.txt` will have an extra line `full_value_file: op3_inst0_rec10_value.npy` for the
+corresponding statement, telling you which one to read. You can also get the directory directly in
+Python:
+
+```python
+runs = debugger.take_exported_runs()
+run = runs[0]
+print(run["full_dump_artifact_dir"])   # absolute path of _artifacts/
+print(run["full_dump_index_path"])     # the index file, which contains the statement->npy mapping
+```
+
+### Use numpy to pick out the bad lanes
+
+Taking that NaN example from D-5, after `root = tl.sqrt(ratio)` is dumped to disk:
+
+```python
+import numpy as np
+
+root = np.load("/tmp/flagtree_debugger_nan_lv2/..._artifacts/opX_instY_root_value.npy")
+print("bad lane indices:", np.where(np.isnan(root))[0])   # -> [0 1 2 3 4 5 6 7]
+print("bad value count:", int(np.isnan(root).sum()))      # -> 8, matches level 1's nan_count
+
+# To learn which access address it is, read the corresponding *_memory_address.npy (only when addr_level=2 and the backend supports it)
+addr = np.load("/tmp/flagtree_debugger_nan_lv2/..._artifacts/opX_instY_memory_address.npy")
+print("source addresses of the first 8 bad lanes:", [hex(int(a)) for a in addr[:8]])
+```
+
+This pins down "there are 8 nans" to "lanes 0-7 are bad, and which block of addresses each of them
+read" — which exactly matches the first 8 negatives of the input `x = linspace(-4, 4, 16)`. **Level
+1 locates to the statement, level 2 locates to the lane and the address.**
+
+> Practical reminder: the number of files level 2 produces grows linearly with the number of
+> statements and records, so do not blindly turn it fully on for a large kernel. A common practice
+> is to first use level 1 to narrow the suspect statements down to one or two, then turn on level 2
+> only for that segment.
+
+## D-7: Use a script to summarize/visualize the report (optional)
+
+Manually leafing through the `.txt` report is fine for single-case troubleshooting; if you want to
+**see at a glance** how the values trend across all statements of one run, or to compare across
+multiple runs, use `flagprism_report_summary.py`. It parses the report **json** (the structured
+version of the main report `.txt`) and outputs two things:
+
+1. **A text summary table** — lists `elem/nan/inf/zero/min/max/mean/l2` per statement, and
+   automatically prints conclusion lines "first statement where inf appears" and "first statement
+   where nan appears", pointing out the anomaly source in one line.
+2. **A `--plot` png chart** — the top half is a bar chart of the nan/inf/zero counts per statement,
+   the bottom half is a line chart of min/max/mean/l2_norm as statements progress, making it clear
+   at a glance at which step the values blow up. Requires matplotlib (if not installed it is
+   automatically skipped and only text is produced).
+
+```bash
+# Automatically find the latest main report under /tmp/flagtree_debugger_* and print the text table
+python3 flagprism_report_summary.py
+
+# Text + chart (the chart defaults to *_summary.png in the same directory as the report)
+python3 flagprism_report_summary.py --plot
+
+# Specify a particular report
+python3 flagprism_report_summary.py /tmp/flagtree_debugger_nan/exp_catch_nan_buggy_kernel_xxx_run1.json --plot
+
+# When fields do not match / the table is empty, look at the structure it actually parsed
+python3 flagprism_report_summary.py <json path> --dump
+```
+
+For that NaN report from D-5, the text table directly gives: `ratio = x / d` is where inf first
+appears, `root = tl.sqrt(ratio)` is where nan first appears — consistent with the conclusion you get
+from reading the summary manually, but without leafing through line by line.
+
+> The field hierarchy may differ slightly across FlagPrism versions, so the script does adaptive
+> probing (it can parse values with type suffixes like `[16 (U64)]`). If it cannot parse, first use
+> `--dump` to see the structure, then adjust. The chart titles contain Chinese; if the machine has
+> no Chinese font, boxes will be shown, which does not affect the data.
+
+## D-8: What this experiment proved, and the boundaries to be aware of
+
+**What it can do:**
+- The numeric summary (nan/inf/mean/min/max/l2_norm) of every statement inside the kernel is visible.
+- The load/store address summary (first/last address, stride, access pattern, effective lane count) is visible.
+- Level 2 can dump full values and per-lane addresses to disk as `.npy` for one-by-one verification.
+- It can pinpoint an "output has NaN" problem to **exactly which Triton statement**.
+
+**Boundaries to know (Iluvatar / current version):**
+- **Address analysis is complete only for "provable" pointer chains.** Iluvatar computes the address
+  summary with scalar i64 for contiguous pointer chains; for pointer/mask patterns that cannot be
+  fully analyzed, it only reports the provable part and does not fabricate lane addresses. This is a
+  limitation of the current CoreX TTIR->TTGIR conversion, not a limitation of hardware address bit width.
+- **`addr_level=2` (per-lane full addresses) is available only when the backend supports that
+  pointer/mask pattern**; `*_memory_address.npy` is generated only when it is supported.
+- **The device instruction timeline is currently not enabled on Iluvatar** (`timeline=True` only
+  takes effect on NVIDIA/Ascend).
+- **Numerical error diagnosis only covers direct fp16/bf16/fp32 conversions** (`arith.truncf/extf`,
+  which report precision_conversion). **Automatic determination** of accumulated drift over long
+  compute chains, raw-bit/ULP analysis, near-zero divisors, and sqrt of negatives is not yet done —
+  so the NaN example above relies on you reading the summary to locate it; the Debugger currently
+  does not automatically conclude "divide-by-zero here".
+- **The hidden-argument ABI does not yet penetrate arbitrary call graphs**: helpers/callees whose
+  signatures cannot be safely rewritten stay metadata-only, to avoid the Debugger changing the
+  original kernel's semantics.
+- The report can currently compare by program instance and view lane addresses at level 2, but
+  **does not yet** directly output warp id, anomalous-lane clustering, or a "suspicious access
+  context" conclusion.
+
+### One-line summary
+
+**The Debugger turns the inside of a Triton kernel from a "black box" into "verifiable statement by
+statement".** In daily use, `level=1, addr_level=1` to look at the summary and address summary is
+enough to locate the vast majority of numeric/access problems; for hard problems, go to `level=2` to
+dump full data. The main boundaries of this Iluvatar path are: address analysis is complete only for
+provable pointer chains, the instruction timeline is not enabled, and numeric anomalies have to be
+located by you reading the summary rather than by automatic determination.
+
+## D-9: Expected vs actual — capability/boundary comparison charts
+
+Putting D-8's "what it can do" and "the boundaries to know" into charts makes it clear at a glance
+where this toolset stands on Iluvatar's current version and what still falls short. The numbers in
+the charts are all hard-coded to the real results recorded in this experiment's D-5/D-8, generated
+with `make_gap_charts.py`:
+
+```bash
+pip install matplotlib numpy
+
+# Generate 4 png charts in the current directory
+python make_gap_charts.py
+# Generates: gap_1_radar.png / gap_2_nan_chain.png / gap_3_levels.png / gap_4_availability.png
+```
+
+### What each of the four charts shows
+
+**Chart 1 Capability radar** (`gap_1_radar.png`): the blue line is expected, the orange line is
+actual. Where they overlap, the capability is in place (numeric summary, level 2 full dump, and
+per-statement NaN localization are all achieved); the dented ones are "address summary" (complete
+only for provable pointer chains), "per-lane addresses" (only when the backend supports that
+pointer/mask pattern), and "automatic numeric anomaly determination" (currently relies on a human
+reading the summary; the tool does not draw conclusions).
+
+**Chart 2 NaN propagation chain** (`gap_2_nan_chain.png`): draws that real report from D-5 as bars —
+the `d = load` step has `zero_count=1` burying a divide-by-zero hazard -> `ratio = x/d` surfaces
+`inf_count=1` -> `root = sqrt` becomes `nan_count=8` all at once. Where the bad values first appear
+and how they accumulate are unfolded level by level.
+
+**Chart 3 level 1 vs level 2** (`gap_3_levels.png`): daily level 1 gives the numeric summary +
+address summary, with a small report; level 2 additionally dumps full values and (when the backend
+supports it) per-lane addresses to disk as `.npy`, able to pinpoint exactly which lanes are bad, but
+with many more files. Run with level 1 first, go to level 2 for hard cases.
+
+**Chart 4 Capability availability heat table** (`gap_4_availability.png`): YES/~/NO lays out in one
+row what the Iluvatar CoreX current version actually has. Achieved: numeric summary, address
+summary, level 2 dump, localization to statement, fp conversion precision diagnosis; with
+reservations (~): per-lane full addresses (depends on backend pointer/mask support); not yet
+available: instruction timeline, divide-by-zero/negative-sqrt automatic determination, hidden-argument
+ABI penetrating arbitrary call graphs, warp/anomalous-lane clustering.
+
+> The plotting script is `make_gap_charts.py`, where the numbers are hard-coded to this experiment's
+> real results. To swap in your own data, open that file, change the corresponding values, and
+> rerun. The chart titles contain Chinese; if the machine has no Chinese font, it automatically
+> falls back to English labels.
