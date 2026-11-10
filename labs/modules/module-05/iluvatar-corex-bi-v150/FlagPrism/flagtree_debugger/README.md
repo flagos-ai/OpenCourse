@@ -37,7 +37,7 @@ We assume this is your first time with these tools, so every new term is explain
 - `exp_debugger_tianshu.py` — the experiment main script (two kernels, vector_add + rmsnorm, with collect markers)
 - `exp_catch_nan.py` — use the Debugger to catch a real NaN/Inf, demonstrating its most core use
 - `flagprism_report_summary.py` — report summary + visualization tool, parses the report json into a text table and png chart (see Step 7)
-- `make_gap_charts.py` — the script that generates the "expected vs actual" capability/boundary comparison charts (see Step 9)
+- `make_gap_charts_debugger.py` — the script that generates the "expected vs actual" capability/boundary comparison charts (see Step 9)
 - `README.md` — this file
 
 ---
@@ -490,13 +490,13 @@ you reading the summary to locate rather than automatic detection.
 ## Step 9: Expected vs actual — capability/boundary comparison charts
 
 Putting the "what it can do" and "boundaries to know" from Step 8 into charts makes it clear at a glance where this toolset stands on the current Iluvatar version, and what's still missing.
-The numbers in the charts are all hardcoded to the real results recorded in Steps 5/8 of this experiment, generated with `make_gap_charts.py`:
+The numbers in the charts are all hardcoded to the real results recorded in Steps 5/8 of this experiment, generated with `make_gap_charts_debugger.py`:
 
 ```bash
 pip install matplotlib numpy
 
 # Generate 4 png charts in the current directory
-python make_gap_charts.py
+python make_gap_charts_debugger.py
 # Generates: gap_1_radar.png / gap_2_nan_chain.png / gap_3_levels.png / gap_4_availability.png
 ```
 
@@ -529,7 +529,7 @@ automatic detection of division-by-zero/sqrt-of-negative, hidden-argument ABI th
 
 ![Chart 4 Capability availability](gap_4_availability.png)
 
-> The charting script is `make_gap_charts.py`, and the numbers inside are hardcoded to the real results of this experiment. To swap in your own data,
+> The charting script is `make_gap_charts_debugger.py`, and the numbers inside are hardcoded to the real results of this experiment. To swap in your own data,
 > open that file, change the corresponding values, and re-run. The chart titles contain Chinese, and if the machine has no Chinese font it automatically falls back to English labels.
 
 ---
