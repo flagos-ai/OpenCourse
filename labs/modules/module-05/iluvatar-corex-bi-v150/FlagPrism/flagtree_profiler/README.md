@@ -26,7 +26,7 @@ It assumes you are encountering these tools for the first time, so every new ter
 
 - `exp_profiler_tianshu.py` — main experiment script (two Triton kernels + performance tagging)
 - `exp_basic_usage.py` — example script for the two basic usages (profile a function / profile a region)
-- `make_gap_charts.py` — script that generates the "expected vs actual" comparison charts
+- `make_gap_charts_profiler.py` — script that generates the "expected vs actual" comparison charts
 - `README.md` — this file
 
 ---
@@ -376,7 +376,7 @@ Putting "what we ideally should get" and "what Iluvatar actually gets" side by s
 pip install matplotlib numpy
 
 # Run the script; it generates 4 png charts in the current directory
-python make_gap_charts.py
+python make_gap_charts_profiler.py
 # Generates 4 charts: gap_1_radar.png / gap_2_injected.png / gap_3_duration.png / gap_4_availability.png
 ```
 
@@ -422,5 +422,5 @@ injected values) is all YES; these are what Iluvatar can actually give you.
 "CPU launch time" rather than "card execution time"; two, a whole class of NVIDIA-exclusive hardware metrics (bandwidth, occupancy, etc.) Iluvatar simply lacks.
 The first point may be obtainable by switching to `--replay-mode application`; the second is the boundary of hardware capability, so just accept it.
 
-> The plotting script is `make_gap_charts.py`, with the numbers hard-coded to this experiment's real results. To swap in your own data,
+> The plotting script is `make_gap_charts_profiler.py`, with the numbers hard-coded to this experiment's real results. To swap in your own data,
 > open the file, change the corresponding values, and rerun -- the code is all in the script, and this guide does not repeat it here.
